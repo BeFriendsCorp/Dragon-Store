@@ -18,15 +18,22 @@
   "dependencies": {
     "electron-updater": "^6.6.2"
   },
-  "build": {
-    "appId": "com.dragonstore.app",
-    "productName": "Dragon Store",
-    "win": {
-      "target": "nsis"
-    },
-    "nsis": {
-      "oneClick": false,
-      "allowToChangeInstallationDirectory": true
+"build": {
+  "appId": "com.dragonstore.app",
+  "productName": "Dragon Store",
+  "publish": [
+    {
+      "provider": "github",
+      "owner": "BeFriendsCorp",
+      "repo": "Dragon-Store"
     }
+  ],
+  "win": {
+    "target": "nsis"
+  },
+  "nsis": {
+    "oneClick": false,
+    "allowToChangeInstallationDirectory": true
   }
+}
 }
