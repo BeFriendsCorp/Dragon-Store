@@ -21,7 +21,7 @@ app.whenReady().then(() => {
 
     // Vérifie les mises à jour
     setTimeout(() => {
-        autoUpdater.checkForUpdatesAndNotify();
+        autoUpdater.checkForUpdates();
     }, 3000);
 
     app.on("activate", () => {
@@ -31,31 +31,51 @@ app.whenReady().then(() => {
     });
 });
 
+// On ne télécharge pas automatiquement
+autoUpdater.autoDownload = false;
+
 // Nouvelle version disponible
-autoUpdater.on("update-available", () => {
-    dialog.showMessageBox({
+autoUpdater.on("update-available", async (info) => {
+    const result = await dialog.showMessageBox(win, {
         type: "info",
         title: "Dragon Store",
-        message: "🐉 Une nouvelle version de Dragon Store est disponible !",
-        detail: "La mise à jour va être téléchargée automatiquement.",
-        buttons: ["OK"]
+        message: "🐉 Une nouvelle version est disponible !",
+        detail: `Version actuelle : ${app.getVersion()}\nNouvelle version : ${info.version}`,
+        buttons: ["METTRE À JOUR", "PLUS TARD"],
+        defaultId: 0,
+        cancelId: 1
     });
+
+    if (result.response === 0) {
+        try {
+            await autoUpdater.downloadUpdate();
+        } catch (error) {
+            dialog.showErrorBox(
+                "Dragon Store",
+                "❌ Impossible de télécharger la mise à jour."
+            );
+            console.error(error);
+        }
+    }
 });
 
 // Téléchargement terminé
-autoUpdater.on("update-downloaded", () => {
-    dialog.showMessageBox({
+autoUpdater.on("update-downloaded", async () => {
+    const result = await dialog.showMessageBox(win, {
         type: "info",
         title: "Dragon Store",
         message: "✅ Mise à jour téléchargée !",
         detail: "Dragon Store va redémarrer pour installer la nouvelle version.",
-        buttons: ["Redémarrer maintenant"]
-    }).then(() => {
-        autoUpdater.quitAndInstall();
+        buttons: ["REDÉMARRER"],
+        defaultId: 0
     });
+
+    if (result.response === 0) {
+        autoUpdater.quitAndInstall();
+    }
 });
 
-// Erreur de mise à jour
+// Erreur
 autoUpdater.on("error", (error) => {
     console.error("Erreur de mise à jour :", error);
 });

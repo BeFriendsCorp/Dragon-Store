@@ -1,6 +1,6 @@
 {
   "name": "dragon-store",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Dragon Store",
   "main": "main.js",
   "scripts": {
@@ -18,22 +18,22 @@
   "dependencies": {
     "electron-updater": "^6.6.2"
   },
-"build": {
-  "appId": "com.dragonstore.app",
-  "productName": "Dragon Store",
-  "publish": [
-    {
-      "provider": "github",
-      "owner": "BeFriendsCorp",
-      "repo": "Dragon-Store"
+  "build": {
+    "appId": "com.dragonstore.app",
+    "productName": "Dragon Store",
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "BeFriendsCorp",
+        "repo": "Dragon-Store"
+      }
+    ],
+    "win": {
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
     }
-  ],
-  "win": {
-    "target": "nsis"
-  },
-  "nsis": {
-    "oneClick": false,
-    "allowToChangeInstallationDirectory": true
   }
-}
 }
