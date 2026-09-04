@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dragon Store</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         LOADING SCREEN
+    ========================== -->
+
+    <div id="loading-screen">
+
+        <div class="dragon">🐉</div>
+
+        <h1>DRAGON <span>STORE</span></h1>
+
+        <p>INITIALIZING MARKETPLACE...</p>
+
+        <div class="loading-box">
+            <div class="loading-progress"></div>
+        </div>
+
+        <div class="loading-text">
+            LOADING <span id="percent">0</span>%
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         STORE
+    ========================== -->
+
+    <div id="store">
+
+        <!-- HEADER -->
+
+        <header>
+
+            <div class="logo">
+                🐉 <span>DRAGON</span> STORE
+            </div>
+
+            <nav>
+                <a href="#home">HOME</a>
+                <a href="#products">STORE</a>
+                <a href="#products" data-nav-category="script">SCRIPTS</a>
+                <a href="#products" data-nav-category="map">MAPS</a>
+                <a href="#products" data-nav-category="game">GAMES</a>
+                <a href="#products" data-nav-category="asset">ASSETS</a>
+            </nav>
+
+        </header>
+
+
+        <!-- HERO -->
+
+        <section class="hero" id="home">
+
+            <div class="hero-content">
+
+                <p class="small-title">
+                    ROBLOX CREATOR MARKETPLACE
+                </p>
+
+                <h2>
+                    DRAGON<br>
+                    <span>STORE</span>
+                </h2>
+
+                <p class="description">
+                    Discover premium Roblox scripts, maps,
+                    games and assets created for developers.
+                </p>
+
+                <button class="explore" onclick="scrollToStore()">
+                    EXPLORE STORE →
+                </button>
+
+            </div>
+
+            <div class="dragon-big">
+                🐉
+            </div>
+
+        </section>
+
+
+        <!-- STORE -->
+
+        <section class="store-section" id="products">
+
+            <div class="section-title">
+
+                <p>OUR MARKETPLACE</p>
+
+                <h2>
+                    EXPLORE <span>PRODUCTS</span>
+                </h2>
+
+            </div>
+
+
+            <!-- CATEGORY BUTTONS -->
+
+            <div class="categories">
+
+                <button
+                    class="category active"
+                    data-category="all">
+                    ALL
+                </button>
+
+                <button
+                    class="category"
+                    data-category="script">
+                    🧩 SCRIPT
+                </button>
+
+                <button
+                    class="category"
+                    data-category="map">
+                    🗺️ MAP
+                </button>
+
+                <button
+                    class="category"
+                    data-category="game">
+                    🎮 GAME
+                </button>
+
+                <button
+                    class="category"
+                    data-category="asset">
+                    🧱 ASSET
+                </button>
+
+            </div>
+
+
+            <!-- PRODUCTS
+                 Les produits sont créés automatiquement
+                 par script.js
+            -->
+
+            <div class="products" id="products-container"></div>
+
+            <div
+                class="no-products"
+                id="no-products">
+                NO PRODUCTS FOUND
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+
+        <footer>
+
+            <div class="footer-logo">
+                🐉 DRAGON STORE
+            </div>
+
+            <p>
+                Premium Roblox creator marketplace.
+            </p>
+
+            <span>
+                © 2026 Dragon Store
+            </span>
+
+        </footer>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
