@@ -25,7 +25,8 @@
       {
         "provider": "github",
         "owner": "BeFriendsCorp",
-        "repo": "Dragon-Store"
+        "repo": "Dragon-Store",
+        "releaseType": "release"
       }
     ],
     "win": {

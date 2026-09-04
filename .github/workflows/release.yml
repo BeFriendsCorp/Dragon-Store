@@ -27,4 +27,4 @@ jobs:
       - name: Build and publish
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npm run build -- --publish always -c.publish.releaseType=release
+        run: npm run build -- --publish always
