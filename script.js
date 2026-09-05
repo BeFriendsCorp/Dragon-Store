@@ -1,26 +1,8 @@
+
 /* ==================================================
    DRAGON STORE
    PRODUITS
 ================================================== */
-
-
-/*
-    ================================================
-    AJOUTER DES PRODUITS ICI
-    ================================================
-
-    category doit être :
-
-    "script"
-    "map"
-    "game"
-    "asset"
-
-    link = lien officiel Roblox du produit.
-
-    image = facultatif.
-    Si tu n'as pas d'image, laisse simplement "".
-*/
 
 const products = [
 
@@ -33,15 +15,17 @@ const products = [
         image: "",
         link: "https://discord.gg/sDBFbwN6UB"
     },
-{
-    name: "Quantum Onyx Project",
-    category: "script",
-    price: 0,
-    description: "Best script for Blox fruits",
-    icon: "⚔️",
-    image: "",
-    link: "https://discord.gg/7uxfCKCN7t"
-},
+
+    {
+        name: "Quantum Onyx Project",
+        category: "script",
+        price: 0,
+        description: "Best script for Blox fruits",
+        icon: "⚔️",
+        image: "",
+        link: "https://discord.gg/7uxfCKCN7t"
+    },
+
     {
         name: "Futuristic Building Pack",
         category: "asset",
@@ -51,13 +35,6 @@ const products = [
         image: "",
         link: "https://discord.gg/rjwkfeS2fV"
     },
-
-
-    /*
-        EXEMPLE DE PRODUIT SUPPLÉMENTAIRE
-
-        Copie ce bloc pour ajouter d'autres produits.
-    */
 
     {
         name: "UI Pack",
@@ -72,21 +49,24 @@ const products = [
 ];
 
 
+
 /* ==================================================
-   GÉNÉRATION DES PRODUITS
+   PRODUITS
 ================================================== */
 
 const productsContainer =
-    document.getElementById("products-container");
+    document.getElementById(
+        "products-container"
+    );
 
 const noProducts =
-    document.getElementById("no-products");
+    document.getElementById(
+        "no-products"
+    );
 
 
 function getCategoryClass(category) {
-
     return category + "-image";
-
 }
 
 
@@ -95,25 +75,18 @@ function createProduct(product) {
     const card =
         document.createElement("div");
 
-    card.className = "product-card";
+    card.className =
+        "product-card";
 
     card.dataset.category =
         product.category;
 
-
-    /*
-        Image
-
-        Si une image existe :
-        on affiche l'image.
-
-        Sinon :
-        on affiche l'emoji.
-    */
-
     let imageContent = "";
 
-    if (product.image && product.image.trim() !== "") {
+    if (
+        product.image &&
+        product.image.trim() !== ""
+    ) {
 
         imageContent = `
             <img
@@ -128,18 +101,13 @@ function createProduct(product) {
         imageContent = `
             <span>${product.icon}</span>
         `;
-
     }
-
 
     card.innerHTML = `
 
         <div class="product-image ${getCategoryClass(product.category)}">
-
             ${imageContent}
-
         </div>
-
 
         <div class="product-info">
 
@@ -147,16 +115,13 @@ function createProduct(product) {
                 ${product.category.toUpperCase()}
             </div>
 
-
             <h3>
                 ${product.name}
             </h3>
 
-
             <p>
                 ${product.description}
             </p>
-
 
             <div class="product-bottom">
 
@@ -164,13 +129,10 @@ function createProduct(product) {
                     <span>R$</span> ${product.price}
                 </div>
 
-
                 <button
                     class="buy"
                     onclick="buyProduct('${product.link}')">
-
                     BUY →
-
                 </button>
 
             </div>
@@ -179,9 +141,7 @@ function createProduct(product) {
 
     `;
 
-
     return card;
-
 }
 
 
@@ -193,7 +153,6 @@ function renderProducts() {
 
     productsContainer.innerHTML = "";
 
-
     products.forEach(product => {
 
         const card =
@@ -203,9 +162,7 @@ function renderProducts() {
 
     });
 
-
     updateNoProducts();
-
 }
 
 
@@ -216,40 +173,24 @@ function renderProducts() {
 function filterProducts(category, button) {
 
     const cards =
-        document.querySelectorAll(".product-card");
+        document.querySelectorAll(
+            ".product-card"
+        );
 
     const buttons =
-        document.querySelectorAll(".category");
-
-
-    /*
-        Retire active de tous les boutons
-    */
+        document.querySelectorAll(
+            ".category"
+        );
 
     buttons.forEach(btn => {
-
         btn.classList.remove("active");
-
     });
 
-
-    /*
-        Active le bouton sélectionné
-    */
-
     if (button) {
-
         button.classList.add("active");
-
     }
 
-
     let visibleProducts = 0;
-
-
-    /*
-        Affiche seulement la bonne catégorie
-    */
 
     cards.forEach(card => {
 
@@ -259,28 +200,20 @@ function filterProducts(category, button) {
         ) {
 
             card.style.display = "";
-
             visibleProducts++;
 
         } else {
 
             card.style.display = "none";
-
         }
 
     });
 
-
     if (visibleProducts === 0) {
-
         noProducts.style.display = "block";
-
     } else {
-
         noProducts.style.display = "none";
-
     }
-
 }
 
 
@@ -291,24 +224,20 @@ function filterProducts(category, button) {
 function updateNoProducts() {
 
     const cards =
-        document.querySelectorAll(".product-card");
-
+        document.querySelectorAll(
+            ".product-card"
+        );
 
     if (cards.length === 0) {
-
         noProducts.style.display = "block";
-
     } else {
-
         noProducts.style.display = "none";
-
     }
-
 }
 
 
 /* ==================================================
-   BOUTONS CATÉGORIES
+   CATÉGORIES
 ================================================== */
 
 document
@@ -331,7 +260,7 @@ document
 
 
 /* ==================================================
-   NAVIGATION HEADER
+   NAVIGATION
 ================================================== */
 
 document
@@ -350,7 +279,6 @@ document
                         `.category[data-category="${category}"]`
                     );
 
-
                 filterProducts(
                     category,
                     button
@@ -363,7 +291,7 @@ document
 
 
 /* ==================================================
-   SCROLL TO STORE
+   SCROLL
 ================================================== */
 
 function scrollToStore() {
@@ -373,14 +301,7 @@ function scrollToStore() {
         .scrollIntoView({
             behavior: "smooth"
         });
-
 }
-
-
-/* ==================================================
-   ROBLOX LOGIN
-================================================== */
-
 
 
 /* ==================================================
@@ -399,16 +320,13 @@ function buyProduct(url) {
         );
 
         return;
-
     }
-
 
     window.open(
         url,
         "_blank",
         "noopener,noreferrer"
     );
-
 }
 
 
@@ -422,16 +340,20 @@ const percent =
     document.getElementById("percent");
 
 const loadingProgress =
-    document.querySelector(".loading-progress");
+    document.querySelector(
+        ".loading-progress"
+    );
 
 const loadingScreen =
-    document.getElementById("loading-screen");
+    document.getElementById(
+        "loading-screen"
+    );
 
 const store =
     document.getElementById("store");
 
-
-document.body.style.overflow = "hidden";
+document.body.style.overflow =
+    "hidden";
 
 
 const loading =
@@ -445,17 +367,14 @@ const loading =
         loadingProgress.style.width =
             progress + "%";
 
-
         if (progress >= 100) {
 
             clearInterval(loading);
-
 
             setTimeout(() => {
 
                 loadingScreen.style.opacity =
                     "0";
-
 
                 setTimeout(() => {
 
@@ -471,7 +390,6 @@ const loading =
                 }, 500);
 
             }, 300);
-
         }
 
     }, 25);
@@ -483,37 +401,5 @@ const loading =
 
 renderProducts();
 
-/* ==================================================
-   VÉRIFICATION DE LA VERSION
-================================================== */
 
-const CURRENT_VERSION = "1.0.0";
 
-async function checkForUpdate() {
-    try {
-        const response = await fetch("/version", {
-            cache: "no-store"
-        });
-
-        if (!response.ok) {
-            console.log("Erreur serveur :", response.status);
-            return;
-        }
-
-        const data = await response.json();
-
-        console.log("Version serveur :", data.version);
-        console.log("Version actuelle :", CURRENT_VERSION);
-
-        if (data.version !== CURRENT_VERSION) {
-            alert("🐉 Une nouvelle version de Dragon Store est disponible !");
-        } else {
-            console.log("✅ Dragon Store est à jour.");
-        }
-
-    } catch (error) {
-        console.error("❌ Vérification impossible :", error);
-    }
-}
-
-checkForUpdate();

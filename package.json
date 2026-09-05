@@ -1,6 +1,6 @@
 {
   "name": "dragon-store",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Dragon Store",
   "main": "main.js",
   "scripts": {
